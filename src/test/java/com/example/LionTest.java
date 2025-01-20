@@ -1,29 +1,31 @@
 package com.example;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(MockitoJUnitRunner.class)
 public class LionTest {
 
-    Feline feline = new Feline();
-    Lion lion = new Lion("Самец", feline);
-
-    public LionTest() throws Exception {
-    }
+    @Spy
+    Feline feline;
 
     @Test
-    public void getKittensTest () {
-    int actualKittensCount = lion.getKittens();
-    assertEquals("Количество потомства не совпадает", 1, actualKittensCount);
+    public void getKittensTest () throws Exception {
+        Lion lion = new Lion("Самец", feline);
+        int actualKittensCount = lion.getKittens();
+        assertEquals("Количество потомства не совпадает", 1, actualKittensCount);
     }
 
     @Test
     public void getFoodTest () throws Exception {
-        Animal animal = new Animal();
-        List<String> expectedMealList = animal.getFood("Хищник");
+        Lion lion = new Lion("Самец", feline);
+        List<String> expectedMealList = List.of("Животные", "Птицы", "Рыба");
         List<String> actualMealList = lion.getFood();
         assertEquals("Списки еды не совпадают", expectedMealList, actualMealList);
     }

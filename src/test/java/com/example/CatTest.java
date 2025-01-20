@@ -1,22 +1,29 @@
 package com.example;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Spy;
+import org.mockito.junit.MockitoJUnitRunner;
+
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CatTest {
 
-    Feline feline = new Feline();
-    Cat cat = new Cat(feline);
+    @Spy
+    Feline feline;
 
     @Test
     public void getSoundTest() {
+        Cat cat = new Cat(feline);
         assertEquals("Неверный звук", "Мяу", cat.getSound());
     }
 
     @Test
     public void getFoodTest() throws Exception {
+        Cat cat = new Cat(feline);
         List<String> expectedMealList = List.of("Животные", "Птицы", "Рыба");
         List<String> actualMealList = cat.getFood();
         assertEquals("Данные расходятся", expectedMealList, actualMealList);

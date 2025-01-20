@@ -2,7 +2,6 @@ package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -39,12 +38,8 @@ public class FelineTest {
     }
 
     @Test
-    public void checkGetKittensWithoutParameterInvokeGetKittensWith1 () {
+    public void checkGetKittensWithoutParameterInvokesGetKittensWith1 () {
         mockedFeline.getKittens();
         Mockito.verify(mockedFeline, Mockito.times(1)).getKittens(1);
     }
-
-
-
-
 }
