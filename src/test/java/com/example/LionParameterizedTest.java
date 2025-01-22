@@ -19,7 +19,7 @@ public class LionParameterizedTest {
     }
 
     @Mock
-    Feline feline = Mockito.mock(Feline.class);
+    Feline feline;
 
     private final String sex;
     private final boolean expectedHasMane;
